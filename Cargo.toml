@@ -1,11 +1,16 @@
 [package]
 name = "bye_octomap_rs"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
 keywords = ["octomap", "nalgebra", "oktree", "octree"]
 description = "OctoMap - An Efficient Probabilistic 3D Mapping Framework Based on Octrees. Implemented in pure Rust."
 authors = ["qsbye"]
+homepage = "https://docs.rs/bye_octomap_rs"
+documentation = "https://docs.rs/bye_octomap_rs"
+repository = "https://github.com/ByeIO/bye.octomap.rs"
+readme = "README.md"
+exclude = ["git"]
 
 [dependencies]
 # 线性代数
