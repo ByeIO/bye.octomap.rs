@@ -1,0 +1,19 @@
+[package]
+name = "bye_octomap_rs"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+keywords = ["octomap", "nalgebra", "oktree", "octree"]
+description = "OctoMap - An Efficient Probabilistic 3D Mapping Framework Based on Octrees. Implemented in pure Rust."
+authors = ["qsbye"]
+
+[dependencies]
+# 线性代数
+nalgebra = "0.33.2"
+# 八叉树
+oktree = "0.5.0"
+# 随机数
+rand = "0.9.0"
+rand_distr = "0.5.0"
+
+
