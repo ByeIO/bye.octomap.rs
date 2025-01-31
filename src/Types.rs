@@ -26,30 +26,18 @@ pub type Point3dList = std::collections::LinkedList<Vector3>;
 
 // 体素, 由其中心点和边长定义
 pub struct OcTreeVolume {
-    center: Point3d,
-    side_length: f64,
+    pub center: Point3d,
+    pub side_length: f64,
 }
 /* end 类型别名 */
 
-/* start 数值转换 */
-// pub const PI: f64 = 3.14159265358979323846;
-pub const PI_2: f64 = 1.570796326794896619;
-
-pub fn deg_to_rad(deg: f64) -> f64 {
-    deg * 0.01745329251994329575
-}
-
-pub fn rad_to_deg(rad: f64) -> f64 {
-    rad * 57.29577951308232087721
-}
-/* end 数值转换 */
 
 /* start Vector3适配器 */
 
 /// 三维向量适配器，基于nalgebra的Vector3实现
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Vector3 {
-    inner: na_Vector3<f64>,
+    pub inner: na_Vector3<f64>,
 }
 
 impl Vector3 {
@@ -256,9 +244,9 @@ mod tests1 {
 
 /* start Quaternion适配器 */
 /// 四元数适配器，基于nalgebra的Quaternion实现
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Quaternion {
-    inner: na_UnitQuaternion<f64>, // 修改为使用UnitQuaternion
+    pub inner: na_UnitQuaternion<f64>, // 修改为使用UnitQuaternion
 }
 
 impl Quaternion {
@@ -418,10 +406,10 @@ mod tests2 {
 
 /* start Pose6D适配器 */
 /// 6D位姿适配器，包含平移和旋转
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Pose6D {
-    translation: Vector3,  // 平移向量
-    rotation: Quaternion,   // 旋转四元数
+    pub translation: Vector3,  // 平移向量
+    pub rotation: Quaternion,   // 旋转四元数
 }
 
 impl Pose6D {

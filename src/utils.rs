@@ -12,6 +12,21 @@
 #![allow(non_snake_case)]
 #![allow(unused_doc_comments)]
 use std::f64::consts::E;
+use std::f64::consts::PI;
+
+/* start 数值转换 */
+// pub const PI: f64 = 3.14159265358979323846;
+pub const PI_2: f64 = 1.570796326794896619;
+
+/// 将度转换为弧度
+pub fn deg_to_rad(deg: f64) -> f64 {
+    deg * 0.01745329251994329575
+}
+
+/// 将弧度转换为度
+pub fn rad_to_deg(rad: f64) -> f64 {
+    rad * 57.29577951308232087721
+}
 
 /// 从概率计算对数几率
 pub fn logodds(probability: f64) -> f64 {
@@ -22,6 +37,7 @@ pub fn logodds(probability: f64) -> f64 {
 pub fn probability(logodds: f64) -> f64 {
     1.0 - (1.0 / (1.0 + E.powf(logodds)))
 }
+/* end 数值转换 */
 
 #[cfg(test)]
 mod tests1 {
