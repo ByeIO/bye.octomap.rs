@@ -18,8 +18,9 @@ pub mod MCTables;
 // 八叉树数据结构总成
 pub mod OcTree;
 
-// 八叉树节点
+// 八叉树节点, 重新导出struct
 pub mod OcTreeNode;
+pub use OcTreeNode::OcTreeNode as Node;
 
 // 八叉树标记
 pub mod OcTreeStamped;
@@ -36,8 +37,9 @@ pub mod OccupancyOcTreeBase;
 // 八叉树基类
 pub mod OcTreeBase;
 
-// 八叉树数据节点
+// 八叉树数据节点, 重新导出struct
 pub mod OcTreeDataNode;
+pub use OcTreeDataNode::OcTreeDataNode as DataNode;
 
 /* end 八叉树数据结构相关 */
 

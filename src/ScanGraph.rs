@@ -535,6 +535,35 @@ impl ScanGraph {
         edge
     }
 
+    // 连接前一个节点
+    pub fn connect_previous(&mut self) {
+        if self.nodes.len() >= 2 {
+            let first = self.nodes[self.nodes.len() - 2].clone();
+            let second = self.nodes[self.nodes.len() - 1].clone();
+            let c = first.borrow().pose.inv() * second.borrow().pose;
+            self.add_edge(first, second, c);
+        }
+    }
+
+    // 导出某个点
+    pub fn export_dot(&self, filename: &str) -> io::Result<()> {
+        let mut outfile = File::create(filename)?;
+        writeln!(outfile, "graph ScanGraph")?;
+        writeln!(outfile, "{{")?;
+        for edge in &self.edges {
+            let edge = edge.borrow();
+            writeln!(
+                outfile,
+                "{} -- {} [label={:.2}]",
+                edge.first.borrow().id,
+                edge.second.borrow().id,
+                edge.constraint.trans_length()
+            )?;
+        }
+        writeln!(outfile, "}}")?;
+        Ok(())
+    }
+
     // 根据ID获取节点
     pub fn get_node_by_id(&self, id: u32) -> Option<Rc<RefCell<ScanNode>>> {
         self.nodes.iter().find(|node| node.borrow().id == id).cloned()
@@ -602,6 +631,21 @@ impl ScanGraph {
                 scan.crop(lower_bound.clone(), upper_bound.clone());
             }
         }
+    }
+
+    // 获取节点的数量
+    pub fn get_num_points(&self, max_id: u32) -> usize {
+        let mut retval = 0;
+        
+        for node in &self.nodes {
+            if let Some(scan) = &node.borrow().scan {
+                retval += scan.points.len();
+            }
+            if max_id > 0 && node.borrow().id == max_id {
+                break;
+            }
+        }
+        retval
     }
 
     // 将图保存为二进制文件
