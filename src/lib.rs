@@ -12,19 +12,32 @@
 #![allow(non_snake_case)]
 #![allow(unused_doc_comments)]
 
-//! 八叉树地图 
+//! 八叉树占据地图 
 
-// PointCloud模块
+// 1. PointCloud模块
 pub mod PointCloud;
 
-// ScanGraph模块
+// 2. ScanGraph模块
 pub mod ScanGraph;
 
-// OcTree模块
-pub mod OcTree;
+// 3. OcTree模块
 
-// Types模块(使用nalgebra库)
+// pub mod OcTree;
+// 这里使用现成的八叉树数据结构, 仅对地图作适配
+// Features:
+// Unsigned arithmetics, bitwise operations.
+// Tree structure is represented by flat, reusable pools. Removed data is marked only.
+// Few memory allocations. Smallvec and Heapless structures are used.
+// No smart pointers (Rc, RefCell e.t.c)
+// Able to operate with Position or Volume data.
+// Could be used with the Bevy game engine or as a standalone tree.
+pub mod OkTree;
+
+// 4. Types模块(使用nalgebra库)
 pub mod Types;
 
-// Utils模块
+// 5. Utils模块
 pub mod Utils;
+
+// 6. Map模块
+pub mod Map;

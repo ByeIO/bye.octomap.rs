@@ -16,9 +16,10 @@ exclude = ["git"]
 # 线性代数
 nalgebra = "0.33.2"
 # 八叉树
-oktree = "0.5.0"
+oktree = { version = "0.5.0", path = "./static/oktree" }
 # 随机数
 rand = "0.9.0"
 rand_distr = "0.5.0"
 # 明文表示二进制数据
 base64 = "0.22.1"
+

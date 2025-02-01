@@ -28,25 +28,22 @@ pub mod OcTreeStamped;
 // 八叉树迭代器
 pub mod OcTreeIterator;
 
-// 八叉树键值
+// 八叉树键值, 重新导出struct
 pub mod OcTreeKey;
+pub use OcTreeKey::OcTreeKey as Key;
+pub use OcTreeKey::OcTreeKeyRay as KeyRay;
+pub use OcTreeKey::OcTreeKeySet as KeySet;
+pub use OcTreeKey::OcTreeKeyType as KeyType;
 
 // 八叉树占据图的基类
 pub mod OccupancyOcTreeBase;
 
 // 八叉树基类
 pub mod OcTreeBase;
+pub mod OcTreeBaseImpl;
 
 // 八叉树数据节点, 重新导出struct
 pub mod OcTreeDataNode;
 pub use OcTreeDataNode::OcTreeDataNode as DataNode;
 
 /* end 八叉树数据结构相关 */
-
-/* start 地图相关 */
-// 地图集合
-pub mod MapCollection;
-
-// 地图节点
-pub mod MapNode;
-/* end 地图相关 */
